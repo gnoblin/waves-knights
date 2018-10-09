@@ -759,6 +759,32 @@
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.2.tgz#e13182e1b69871a422d7863e11a4a6f5b814a4bd"
 
+"@waves/data-entities@^1.6.0":
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/@waves/data-entities/-/data-entities-1.6.4.tgz#c615a013ff6d4e6a8048611d400cd71cc16825a8"
+  dependencies:
+    bignumber.js "7.0.1"
+
+"@waves/signature-generator@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@waves/signature-generator/-/signature-generator-1.0.2.tgz#d3e36551eba5252c99162bc873b5df76bd488fcb"
+  dependencies:
+    "@waves/data-entities" "^1.6.0"
+    base64-js "1.3.0"
+    crypto-js "3.1.9-1"
+
+"@waves/waves-api@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@waves/waves-api/-/waves-api-1.5.1.tgz#1f4ef31faf74c44100d4e6d0cc936a6a166b8a01"
+  dependencies:
+    "@waves/signature-generator" "1.0.2"
+    bignumber.js "7.2.1"
+    crypto-js "3.1.9-1"
+    node-fetch "2.2.0"
+    parse-json-bignumber "^0.1.2"
+    ts-api-validator "2.1.3"
+    ts-utils "6.0.4"
+
 "@webassemblyjs/ast@1.7.6":
   version "1.7.6"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.7.6.tgz#3ef8c45b3e5e943a153a05281317474fef63e21e"
@@ -1449,7 +1475,7 @@ balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
 
-base64-js@^1.0.2:
+base64-js@1.3.0, base64-js@^1.0.2:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.3.0.tgz#cab1e6118f051095e58b5281aea8c1cd22bfc0e3"
 
@@ -1487,6 +1513,14 @@ bfj@6.1.1:
 big.js@^3.1.3:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-3.2.0.tgz#a5fc298b81b9e0dca2e458824784b65c52ba588e"
+
+bignumber.js@7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-7.0.1.tgz#8d2ff74fb2e7a78cbfc3a57bd63cd6106bf8903a"
+
+bignumber.js@7.2.1:
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-7.2.1.tgz#80c048759d826800807c4bfd521e50edbba57a5f"
 
 binary-extensions@^1.0.0:
   version "1.12.0"
@@ -2179,6 +2213,10 @@ crypto-browserify@^3.11.0:
     public-encrypt "^4.0.0"
     randombytes "^2.0.0"
     randomfill "^1.0.3"
+
+crypto-js@3.1.9-1:
+  version "3.1.9-1"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.1.9-1.tgz#fda19e761fc077e01ffbfdc6e9fdfc59e8806cd8"
 
 css-color-names@0.0.4, css-color-names@^0.0.4:
   version "0.0.4"
@@ -5351,6 +5389,10 @@ no-case@^2.2.0:
   dependencies:
     lower-case "^1.1.1"
 
+node-fetch@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.2.0.tgz#4ee79bde909262f9775f731e3656d0db55ced5b5"
+
 node-forge@0.7.5:
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.7.5.tgz#6c152c345ce11c52f465c2abd957e8639cd674df"
@@ -5732,6 +5774,10 @@ parse-glob@^3.0.4:
     is-dotfile "^1.0.0"
     is-extglob "^1.0.0"
     is-glob "^2.0.0"
+
+parse-json-bignumber@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/parse-json-bignumber/-/parse-json-bignumber-0.1.2.tgz#aa2d77eabe5877900f6e5f2cf8e47839763c3e97"
 
 parse-json@^2.2.0:
   version "2.2.0"
@@ -6688,7 +6734,7 @@ react-dev-utils@^6.0.4:
     strip-ansi "4.0.0"
     text-table "0.2.0"
 
-react-dom@16.5.2:
+react-dom@^16.5.2:
   version "16.5.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.5.2.tgz#b69ee47aa20bab5327b2b9d7c1fe2a30f2cfa9d7"
   dependencies:
@@ -6754,7 +6800,7 @@ react-scripts@2.0.4:
   optionalDependencies:
     fsevents "1.2.4"
 
-react@16.5.2:
+react@^16.5.2:
   version "16.5.2"
   resolved "https://registry.yarnpkg.com/react/-/react-16.5.2.tgz#19f6b444ed139baa45609eee6dc3d318b3895d42"
   dependencies:
@@ -7854,6 +7900,16 @@ trim-right@^1.0.1:
 tryer@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/tryer/-/tryer-1.0.1.tgz#f2c85406800b9b0f74c9f7465b81eaad241252f8"
+
+ts-api-validator@2.1.3:
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/ts-api-validator/-/ts-api-validator-2.1.3.tgz#ede08261e91f87e051b3de1f92318da669f62f64"
+  dependencies:
+    ts-utils "^6.0.2"
+
+ts-utils@6.0.4, ts-utils@^6.0.2:
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/ts-utils/-/ts-utils-6.0.4.tgz#efac40935a62a9827d2c9655db320e93d541fc37"
 
 tslib@^1.9.0:
   version "1.9.3"
