@@ -202,7 +202,7 @@ class App extends Component {
         <div className="game__container">
           <div className="game__col">
             <article className="player">
-              <h2>Player 1 <a href={`testnet.wavesexplorer.com/address/$player1.address`} className="player__link">{player1.address}</a></h2>
+              <h2>Player 1 <a href={`https://testnet.wavesexplorer.com/address/${player1.address}`} target="_blank" className="player__link">{player1.address}</a></h2>
               <form className="player__start" onSubmit={this.initGame.bind()} style={gameState === 0 || gameState === "ended" ? isVisible : isNotVisible}>
                 <button type="submit">Init Game</button>
               </form>
@@ -243,7 +243,7 @@ class App extends Component {
           </div>
           <div className="game__col">
             <article className="player">
-              <h2>Player 2 <a href={`testnet.wavesexplorer.com/address/$player2.address`} className="player__link">{player2.address}</a></h2>
+              <h2>Player 2 <a href={`https://testnet.wavesexplorer.com/address/${player2.address}`} target="_blank" className="player__link">{player2.address}</a></h2>
               <form className="player__start" onSubmit={this.registerPlayerTwo} style={gameState === 3 ? isVisible : isNotVisible}>
                 <button type="submit">Join game</button>
               </form>
