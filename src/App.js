@@ -9,12 +9,14 @@ import data from './txdata';
 const { contractAccount, player1, player2 } = accounts;
 
 const Waves = WavesAPI.create(WavesAPI.TESTNET_CONFIG);
-console.log(data[3]);
+
 class App extends Component {
   state = {
-    gameState: 0,
+    gameState: 3,
     player1Move: 0,
-    player2Move: 0
+    player2Move: 0,
+    message: '',
+    messageLink: ''
   }
 
   initGame = async (e) => {
@@ -33,10 +35,9 @@ class App extends Component {
     
   try {
       const dataTxResult = await Waves.API.Node.transactions.rawBroadcast(dataTxJSON);
-      console.log(dataTxResult);
-      this.setState({gameState: 1});
+      this.setState({message: `Команда успешно выполнена. Детали транзакции:`, messageLink: `testnet.wavesexplorer.com/tx/${dataTxResult.id}`, messageLink: `testnet.wavesexplorer.com/tx/${dataTxResult.id}`, gameState: 1});
     } catch (error) {
-      console.error(error);
+      this.setState({message: `Ошибка выполнения транзакции. Проверьте состояние смарт-контракта:`, messageLink: `testnet.wavesexplorer.com/address/${contractAccount.address}`});
     }
   }
 
@@ -55,10 +56,9 @@ class App extends Component {
     const dataTxJSON = await dataTx.getJSON();
     try {
       const dataTxResult = await Waves.API.Node.transactions.rawBroadcast(dataTxJSON);
-      console.log(dataTxResult);
-      this.setState({gameState: 2});
+      this.setState({message: `Команда успешно выполнена. Детали транзакции:`, messageLink: `testnet.wavesexplorer.com/tx/${dataTxResult.id}`, gameState: 2});
     } catch (error) {
-      console.error(error);
+      this.setState({message: `Ошибка выполнения транзакции. Проверьте состояние смарт-контракта:`, messageLink: `testnet.wavesexplorer.com/address/${contractAccount.address}`});
     }
   }
 
@@ -78,10 +78,9 @@ class App extends Component {
     const dataTxJSON = await dataTx.getJSON();
     try {
       const dataTxResult = await Waves.API.Node.transactions.rawBroadcast(dataTxJSON);
-      console.log(dataTxResult);
-      this.setState({gameState: 3})
+      this.setState({message: `Команда успешно выполнена. Детали транзакции:`, messageLink: `testnet.wavesexplorer.com/tx/${dataTxResult.id}`, gameState: 3});
     } catch (error) {
-      console.error(error);
+      this.setState({message: `Ошибка выполнения транзакции. Проверьте состояние смарт-контракта:`, messageLink: `testnet.wavesexplorer.com/address/${contractAccount.address}`});
     }
   }
 
@@ -100,10 +99,9 @@ class App extends Component {
     const dataTxJSON = await dataTx.getJSON();
     try {
       const dataTxResult = await Waves.API.Node.transactions.rawBroadcast(dataTxJSON);
-      console.log(dataTxResult);
-      this.setState({gameState: 4})
+      this.setState({message: `Команда успешно выполнена. Детали транзакции:`, messageLink: `testnet.wavesexplorer.com/tx/${dataTxResult.id}`, gameState: 4});
     } catch (error) {
-      console.error(error);
+      this.setState({message: `Ошибка выполнения транзакции. Проверьте состояние смарт-контракта:`, messageLink: `testnet.wavesexplorer.com/address/${contractAccount.address}`});
     }
   }
 
@@ -121,10 +119,9 @@ class App extends Component {
     const dataTxJSON = await dataTx.getJSON();
     try {
       const dataTxResult = await Waves.API.Node.transactions.rawBroadcast(dataTxJSON);
-      console.log(dataTxResult);
-      this.setState({gameState: 5})
+      this.setState({message: `Команда успешно выполнена. Детали транзакции:`, messageLink: `testnet.wavesexplorer.com/tx/${dataTxResult.id}`, gameState: 5});
     } catch (error) {
-      console.error(error);
+      this.setState({message: `Ошибка выполнения транзакции. Проверьте состояние смарт-контракта`});
     }
   }
 
@@ -144,10 +141,9 @@ class App extends Component {
     const dataTxJSON = await dataTx.getJSON();
     try {
       const dataTxResult = await Waves.API.Node.transactions.rawBroadcast(dataTxJSON);
-      console.log(dataTxResult);
-      this.setState({gameState: 6})
+      this.setState({message: `Команда успешно выполнена. Детали транзакции:`, messageLink: `testnet.wavesexplorer.com/tx/${dataTxResult.id}`, gameState: 6});
     } catch (error) {
-      console.error(error);
+      this.setState({message: `Ошибка выполнения транзакции. Проверьте состояние смарт-контракта:`, messageLink: `testnet.wavesexplorer.com/address/${contractAccount.address}`});
     }
   }
 
@@ -167,10 +163,9 @@ class App extends Component {
     const dataTxJSON = await dataTx.getJSON();
     try {
       const dataTxResult = await Waves.API.Node.transactions.rawBroadcast(dataTxJSON);
-      console.log(dataTxResult);
-      this.setState({gameState: 7})
+      this.setState({message: `Команда успешно выполнена. Детали транзакции:`, messageLink: `testnet.wavesexplorer.com/tx/${dataTxResult.id}`, gameState: 7});
     } catch (error) {
-      console.error(error);
+      this.setState({message: `Ошибка выполнения транзакции. Проверьте состояние смарт-контракта:`, messageLink: `testnet.wavesexplorer.com/address/${contractAccount.address}`});
     }
   }
 
@@ -188,10 +183,9 @@ class App extends Component {
     const dataTxJSON = await dataTx.getJSON();
     try {
       const dataTxResult = await Waves.API.Node.transactions.rawBroadcast(dataTxJSON);
-      console.log(dataTxResult);
-      this.setState({gameState: "ended"})
+      this.setState({message: `Команда успешно выполнена. Детали транзакции:`, messageLink: `testnet.wavesexplorer.com/tx/${dataTxResult.id}`, gameState: "ended"})
     } catch (error) {
-      console.error(error);
+      this.setState({message: `Ошибка выполнения транзакции. Проверьте состояние смарт-контракта.`})
     }
   }
 
@@ -209,7 +203,7 @@ class App extends Component {
           <div className="game__col">
             <article className="player">
               <h2>Player 1</h2>
-              <form className="player__start" onSubmit={this.initGame.bind()} style={gameState === 0 ? isVisible : isNotVisible}>
+              <form className="player__start" onSubmit={this.initGame.bind()} style={gameState === 0 || gameState === "ended" ? isVisible : isNotVisible}>
                 <button type="submit">Init Game</button>
               </form>
               <form className="player__start" onSubmit={this.startRegistration} style={gameState === 1 ? isVisible : isNotVisible}>
@@ -242,7 +236,7 @@ class App extends Component {
               <form className="player__finish" onSubmit = {this.endGame} style={gameState === 7 ? isVisible : isNotVisible}>
                 <button type="submit">Finish</button>
               </form>
-              <form className="player__reward" style={gameState === "ended" ? isVisible : isNotVisible}>
+              <form className="player__reward" style={isNotVisible}>
                 <button type="submit">Get Reward</button>
               </form>
             </article>
@@ -271,11 +265,17 @@ class App extends Component {
                 </fieldset>
                 <button type="submit">Move</button>
               </form>
-              <form className="player__reward" style={gameState === "ended" ? isVisible : isNotVisible}>
+              <form className="player__reward" style={isNotVisible}>
                 <button type="submit">Get Reward</button>
               </form>
             </article>
           </div>
+        </div>
+        <div className="game__container">
+          <p className="game__status" style={this.state.message === '' ? isNotVisible : isVisible}>
+            <span>{this.state.message}</span><br/>
+            <a href={this.state.messageLink} target="_blank">{this.state.messageLink}</a>
+          </p>
         </div>
       </div>
     );
