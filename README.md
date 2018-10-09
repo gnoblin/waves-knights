@@ -30,5 +30,6 @@ yarn
 yarn start
 ```
 
-Контракт игры здесь: waves/contract.script 
-Текущий смарт-аккаунт игры в src/accounts.js
+Контракт игры здесь: waves/contract.script,
+[Адрес смарт-аккаунта игры в testnet] (https://testnet.wavesexplorer.com/address/3MwpUQwpSfHV1rFfHqCuuYL7A9K8ursTQWk)
+Текущий смарт-аккаунт игры и тестовые адреса игроков: src/accounts.js
