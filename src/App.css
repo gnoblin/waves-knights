@@ -17,3 +17,8 @@
 .player__move {
   display: block;
 }
+
+.player__link {
+  font-size: 14px;
+  display: block;
+}
