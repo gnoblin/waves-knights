@@ -1,0 +1,23 @@
+match (tx) {
+    case dt: DataTransaction => 
+      let gameNotStarted = match getInteger(dt.sender,"gameState") {  
+          case i : Int => false
+          case _ => true 
+      }
+    let oldGameState = extract(getInteger(dt.sender, "gameState"))
+    let newGameState = match getInteger(dt.data,"gameState") {  
+          case k : Int => k
+          case _ => 7 
+    }
+    let validStep = (oldGameState + 1) == newGameState
+    let gameInitialization = (gameNotStarted && (extract(getInteger(dt.data,"command")) == 0) && (extract(getInteger(dt.data,"gameState")) == 0)) 
+    let playersRegistration = (validStep && (extract(getInteger(dt.data,"command")) == 1) && (extract(getString(dt.data,"player1")) == "") && (extract(getString(dt.data,"player2")) == ""))
+    let player1Registration = (validStep && (extract(getInteger(dt.data,"command")) == 2) && sigVerify(dt.bodyBytes, dt.proofs[0], fromBase58String(extract(getString(dt.data,"player1")))))
+    let player2Registration = (validStep && (extract(getInteger(dt.data,"command")) == 3) && sigVerify(dt.bodyBytes, dt.proofs[0], fromBase58String(extract(getString(dt.data,"player2")))))
+    let gameBegin = (validStep && (extract(getInteger(dt.data,"command")) == 4))
+    let move1 = (validStep && (extract(getInteger(dt.data,"command")) == 5) && (extract(getInteger(dt.data,"move1")) <= 2) && sigVerify(dt.bodyBytes, dt.proofs[0], fromBase58String(extract(getString(dt.sender,"player1")))))
+    let move2 = (validStep && (extract(getInteger(dt.data,"command")) == 6) && (extract(getInteger(dt.data,"move2")) <= 2) && sigVerify(dt.bodyBytes, dt.proofs[0], fromBase58String(extract(getString(dt.sender,"player2")))))
+        let gameEnd = ((extract(getInteger(dt.sender,"gameState")) == 6) && (extract(getInteger(dt.data,"command")) == 7) && (extract(getString(dt.data,"gameState")) == "ended"))
+    gameInitialization || playersRegistration || player1Registration || player2Registration || gameBegin || move1 || move2 || gameEnd
+    case _ => true    
+}
