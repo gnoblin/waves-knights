@@ -174,7 +174,7 @@ class App extends Component {
         window.playerTwoWin();
       }
     } catch (error) {
-      this.setState({message: `Ошибка выполнения транзакции. Проверьте состояние смарт-контракта:`, messageLink: `testnet.wavesexplorer.com/address/${contractAccount.address}`});
+      this.setState({message: `Ошибка выполнения транзакции. Предыдущее действие могло еще не успеть записаться в блокчейн. Проверьте состояние смарт-контракта. `, messageLink: `testnet.wavesexplorer.com/address/${contractAccount.address}`});
     }
   }
 
