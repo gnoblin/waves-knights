@@ -1,17 +1,34 @@
 .game {
-  
+  background: #FFF;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 300px;
 }
 
 .game__container {
   display: flex;
   justify-content: stretch;
-  max-width: 800px;
-  margin: 0 auto;
+  flex-direction: column;
+  padding: 0 20px;
+  width: 100%;
 }
 
 .game__col {
-  width: 50%;
-  padding: 0 20px;
+  
+}
+
+.game__statuslink {
+  text-overflow: ellipsis;
+  width: 260px;
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+}
+
+.player {
+  width: 100%;
 }
 
 .player__move {
@@ -21,4 +38,8 @@
 .player__link {
   font-size: 14px;
   display: block;
+  text-overflow: ellipsis;
+  width: 260px;
+  overflow: hidden;
+  white-space: nowrap;
 }

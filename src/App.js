@@ -12,7 +12,7 @@ const Waves = WavesAPI.create(WavesAPI.TESTNET_CONFIG);
 
 class App extends Component {
   state = {
-    gameState: 0,
+    gameState: 3,
     player1Move: 0,
     player2Move: 0,
     message: '',
@@ -274,7 +274,7 @@ class App extends Component {
         <div className="game__container">
           <p className="game__status" style={this.state.message === '' ? isNotVisible : isVisible}>
             <span>{this.state.message}</span><br/>
-            <a href={this.state.messageLink} target="_blank">{this.state.messageLink}</a>
+            <a href={this.state.messageLink} target="_blank" className="game__statuslink">{this.state.messageLink}</a>
           </p>
         </div>
       </div>
