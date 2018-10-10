@@ -38,3 +38,7 @@ yarn start
 [Адрес смарт-аккаунта игры в testnet]: https://testnet.wavesexplorer.com/address/3MwpUQwpSfHV1rFfHqCuuYL7A9K8ursTQWk)
 
 Текущий смарт-аккаунт игры и тестовые адреса игроков: src/accounts.js
+
+demos:
+[https://www.dropbox.com/s/r0jlv62sxe2yf51/wavesKnights-monsterWins.mp4?dl=0](https://www.dropbox.com/s/r0jlv62sxe2yf51/wavesKnights-monsterWins.mp4?dl=0)
+[https://www.dropbox.com/s/r0jlv62sxe2yf51/wavesKnights-monsterWins.mp4?dl=0](https://www.dropbox.com/s/r0jlv62sxe2yf51/wavesKnights-monsterWins.mp4?dl=0)
