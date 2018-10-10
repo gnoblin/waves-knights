@@ -19,10 +19,6 @@ body{
 	border:1px solid #c6c9ca;
 }
 
-.webgl-content {
-	z-index: -1;
-}
-
 #gameContainer,canvas{
 	position:absolute;
 	height:calc(100% - 1px);
@@ -229,5 +225,3 @@ body{
 		width:100vh;
 	}
 }*/
-
-

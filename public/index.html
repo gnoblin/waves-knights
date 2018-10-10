@@ -7,6 +7,7 @@
     <meta name="theme-color" content="#000000">
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <title>Waves Knights</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <link rel="stylesheet" href="TemplateData/css/style.css">
     <script src="Build/UnityLoader.js"></script>
     <script>
@@ -70,7 +71,7 @@
         } 
       }
       
-      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/waves-knights-build5.json", {
+      window.gameInstance = UnityLoader.instantiate("gameContainer", "Build/waves-knights-build9.json", {
         onProgress: UnityProgress,
         compatibilityCheck:CheckCompatibility,
         Module: {
@@ -78,6 +79,22 @@
           onRuntimeInitialized:RuntimeInitialized,
         },    
       });
+      window.beginGame = () => {
+        window.gameInstance.SendMessage('WavesAdapter', 'StartBattle');
+      }
+      window.endGame = () => {
+        window.gameInstance.SendMessage('WavesAdapter', 'EndBattle');
+      }
+      window.playerOneWin = () => {
+        console.log('PlayerOneWin'); 
+        window.gameInstance.SendMessage('WavesAdapter', 'WinPlayer1');
+      }
+      window.playerTwoWin = () => {
+        window.gameInstance.SendMessage('WavesAdapter', 'WinPlayer2');
+      }
+      window.draw = () => {
+        window.gameInstance.SendMessage('WavesAdapter', 'Draw');
+      }
       </script>
   </head>
   <body>

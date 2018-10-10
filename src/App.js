@@ -12,7 +12,7 @@ const Waves = WavesAPI.create(WavesAPI.TESTNET_CONFIG);
 
 class App extends Component {
   state = {
-    gameState: 3,
+    gameState: 0,
     player1Move: 0,
     player2Move: 0,
     message: '',
@@ -118,6 +118,7 @@ class App extends Component {
     dataTx.addProof(contractAccount.keyPair.privateKey);
     const dataTxJSON = await dataTx.getJSON();
     try {
+      window.beginGame();
       const dataTxResult = await Waves.API.Node.transactions.rawBroadcast(dataTxJSON);
       this.setState({message: `Команда успешно выполнена. Детали транзакции:`, messageLink: `testnet.wavesexplorer.com/tx/${dataTxResult.id}`, gameState: 5});
     } catch (error) {
@@ -164,6 +165,14 @@ class App extends Component {
     try {
       const dataTxResult = await Waves.API.Node.transactions.rawBroadcast(dataTxJSON);
       this.setState({message: `Команда успешно выполнена. Детали транзакции:`, messageLink: `testnet.wavesexplorer.com/tx/${dataTxResult.id}`, gameState: 7});
+      const { player1Move, player2Move } = this.state;
+      if (player1Move === player2Move) {
+        window.draw()
+      } else if ((player1Move === 0 && player2Move === 1) || (player1Move === 1 && player2Move === 2) || (player1Move === 2 && player2Move === 0)) {
+        window.playerOneWin();
+      } else {
+        window.playerTwoWin();
+      }
     } catch (error) {
       this.setState({message: `Ошибка выполнения транзакции. Проверьте состояние смарт-контракта:`, messageLink: `testnet.wavesexplorer.com/address/${contractAccount.address}`});
     }
@@ -182,6 +191,7 @@ class App extends Component {
     dataTx.addProof(contractAccount.keyPair.privateKey);
     const dataTxJSON = await dataTx.getJSON();
     try {
+      window.endGame();
       const dataTxResult = await Waves.API.Node.transactions.rawBroadcast(dataTxJSON);
       this.setState({message: `Команда успешно выполнена. Детали транзакции:`, messageLink: `testnet.wavesexplorer.com/tx/${dataTxResult.id}`, gameState: "ended"})
     } catch (error) {
