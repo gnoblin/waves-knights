@@ -286,6 +286,7 @@ class App extends Component {
             <span>{this.state.message}</span><br/>
             <a href={this.state.messageLink} target="_blank" className="game__statuslink">{this.state.messageLink}</a>
           </p>
+          <p style={this.state.gameState==="ended" ? isVisible : isNotVisible}>"Обновите страницу, чтобы сыграть еще раз"</p>
         </div>
       </div>
     );
