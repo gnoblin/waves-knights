@@ -167,7 +167,7 @@ class App extends Component {
       this.setState({message: `Команда успешно выполнена. Детали транзакции:`, messageLink: `testnet.wavesexplorer.com/tx/${dataTxResult.id}`, gameState: 7});
       const { player1Move, player2Move } = this.state;
       if (player1Move === player2Move) {
-        window.draw()
+        window.draw();
       } else if ((player1Move === 0 && player2Move === 1) || (player1Move === 1 && player2Move === 2) || (player1Move === 2 && player2Move === 0)) {
         window.playerOneWin();
       } else {
