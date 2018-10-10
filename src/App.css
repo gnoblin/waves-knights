@@ -30,7 +30,7 @@ body {
   overflow: hidden;
   white-space: nowrap;
   display: block;
-  color: teal;
+  color: #2156f5;
 }
 
 .player {
@@ -48,5 +48,5 @@ body {
   width: 260px;
   overflow: hidden;
   white-space: nowrap;
-  color: teal;
+  color: #2156f5;
 }
