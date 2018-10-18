@@ -1,0 +1,12 @@
+{
+"companyName": "DefaultCompany",
+"productName": "WavesKnights",
+"dataUrl": "knights4.data.unityweb",
+"wasmCodeUrl": "knights4.wasm.code.unityweb",
+"wasmFrameworkUrl": "knights4.wasm.framework.unityweb",
+"TOTAL_MEMORY": 520093696,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#000000"
+}
