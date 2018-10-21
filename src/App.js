@@ -21,7 +21,7 @@ class App extends Component {
 
   initGame = async (e) => {
     e.preventDefault();
-  
+
     const dataTxObj = {
       data: data[0],
       fee: 1000000 + 400000,
@@ -32,7 +32,7 @@ class App extends Component {
     const dataTx = await Waves.tools.createTransaction(Waves.constants.DATA_TX_NAME, dataTxObj);
     dataTx.addProof(contractAccount.keyPair.privateKey);
     const dataTxJSON = await dataTx.getJSON();
-    
+
   try {
       const dataTxResult = await Waves.API.Node.transactions.rawBroadcast(dataTxJSON);
       this.setState({message: `Команда успешно выполнена. Детали транзакции:`, messageLink: `testnet.wavesexplorer.com/tx/${dataTxResult.id}`, messageLink: `testnet.wavesexplorer.com/tx/${dataTxResult.id}`, gameState: 1});
@@ -43,7 +43,7 @@ class App extends Component {
 
   startRegistration = async (e) => {
     e.preventDefault();
-  
+
     const dataTxObj = {
       data: data[1],
       fee: 1000000 + 400000,
@@ -65,7 +65,7 @@ class App extends Component {
   registerPlayerOne = async (e) => {
     e.preventDefault();
 
-  
+
     const dataTxObj = {
       data: data[2],
       fee: 1000000 + 400000,
@@ -86,7 +86,7 @@ class App extends Component {
 
   registerPlayerTwo = async (e) => {
     e.preventDefault();
-  
+
     const dataTxObj = {
       data: data[3],
       fee: 1000000 + 400000,
@@ -214,40 +214,46 @@ class App extends Component {
             <article className="player">
               <h2>Player 1 <a href={`https://testnet.wavesexplorer.com/address/${player1.address}`} target="_blank" className="player__link">{player1.address}</a></h2>
               <form className="player__start" onSubmit={this.initGame.bind()} style={gameState === 0 || gameState === "ended" ? isVisible : isNotVisible}>
-                <button type="submit">Init Game</button>
+                <button type="submit" className="mui-btn mui-btn--primary">Init Game</button>
               </form>
               <form className="player__start" onSubmit={this.startRegistration} style={gameState === 1 ? isVisible : isNotVisible}>
-                <button type="submit">Start Registration</button>
+                <button type="submit" className="mui-btn mui-btn--primary">Start Registration</button>
               </form>
               <form className="player__start" onSubmit={this.registerPlayerOne} style={gameState === 2 ? isVisible : isNotVisible}>
-                <button type="submit">Register me</button>
+                <button type="submit" className="mui-btn mui-btn--primary">Register me</button>
               </form>
               <form className="player__start" onSubmit={this.beginGame} style={gameState === 4 ? isVisible : isNotVisible}>
-                <button type="submit">Begin Game</button>
+                <button type="submit" className="mui-btn mui-btn--primary">Begin Game</button>
               </form>
               <form className="player__move" onSubmit={this.playerOneMove} style={gameState === 5 ? isVisible : isNotVisible}>
                 <fieldset className="player__movefields">
                   <legend>Your move</legend>
-                  <label className="player__move">
-                    <input type="radio" value="0" checked={this.state.player1Move === 0} onChange={this.onMoveChange(1)}/>
-                    Rock
-                  </label>
-                  <label className="player__move">
-                    <input type="radio" value="1" checked={this.state.player1Move === 1} onChange={this.onMoveChange(1)}/>
-                    Scissors
-                  </label>
-                  <label className="player__move">
-                    <input type="radio" value="2" checked={this.state.player1Move === 2} onChange={this.onMoveChange(1)}/>
-                    Paper
-                  </label>
+                  <div className="mui-radio">
+                    <label className="player__move">
+                      <input type="radio" value="0" checked={this.state.player1Move === 0} onChange={this.onMoveChange(1)}/>
+                      Rock
+                    </label>
+                  </div>
+                  <div className="mui-radio">
+                    <label className="player__move">
+                      <input type="radio" value="1" checked={this.state.player1Move === 1} onChange={this.onMoveChange(1)}/>
+                      Scissors
+                    </label>
+                  </div>
+                  <div className="mui-radio">
+                    <label className="player__move">
+                      <input type="radio" value="2" checked={this.state.player1Move === 2} onChange={this.onMoveChange(1)}/>
+                      Paper
+                    </label>
+                  </div>
                 </fieldset>
-                <button type="submit">Move</button>
+                <button type="submit" className="mui-btn mui-btn--primary">Move</button>
               </form>
               <form className="player__finish" onSubmit = {this.endGame} style={gameState === 7 ? isVisible : isNotVisible}>
-                <button type="submit">Finish</button>
+                <button type="submit" className="mui-btn mui-btn--primary">Finish</button>
               </form>
               <form className="player__reward" style={isNotVisible}>
-                <button type="submit">Get Reward</button>
+                <button type="submit" className="mui-btn mui-btn--primary">Get Reward</button>
               </form>
             </article>
           </div>
@@ -255,28 +261,34 @@ class App extends Component {
             <article className="player">
               <h2>Player 2 <a href={`https://testnet.wavesexplorer.com/address/${player2.address}`} target="_blank" className="player__link">{player2.address}</a></h2>
               <form className="player__start" onSubmit={this.registerPlayerTwo} style={gameState === 3 ? isVisible : isNotVisible}>
-                <button type="submit">Join game</button>
+                <button type="submit" className="mui-btn mui-btn--primary">Join game</button>
               </form>
               <form className="player__move" onSubmit={this.playerTwoMove} style={gameState === 6 ? isVisible : isNotVisible}>
                 <fieldset className="player__movefields">
                   <legend>Your move</legend>
-                  <label className="player__move">
-                    <input type="radio" name="player1_move" value="0" checked={this.state.player2Move === 0} onChange={this.onMoveChange(2)}/>
-                    Rock
-                  </label>
-                  <label className="player__move">
-                    <input type="radio" name="player1_move" value="1" checked={this.state.player2Move === 1} onChange={this.onMoveChange(2)}/>
-                    Scissors
-                  </label>
-                  <label className="player__move">
-                    <input type="radio" name="player1_move" value="2" checked={this.state.player2Move === 2} onChange={this.onMoveChange(2)}/>
-                    Paper
-                  </label>
+                  <div className="mui-radio">
+                    <label className="player__move">
+                      <input type="radio" name="player1_move" value="0" checked={this.state.player2Move === 0} onChange={this.onMoveChange(2)}/>
+                      Rock
+                    </label>
+                  </div>
+                  <div className="mui-radio">
+                    <label className="player__move">
+                      <input type="radio" name="player1_move" value="1" checked={this.state.player2Move === 1} onChange={this.onMoveChange(2)}/>
+                      Scissors
+                    </label>
+                  </div>
+                  <div className="mui-radio">
+                    <label className="player__move">
+                      <input type="radio" name="player1_move" value="2" checked={this.state.player2Move === 2} onChange={this.onMoveChange(2)}/>
+                      Paper
+                    </label>
+                  </div>
                 </fieldset>
-                <button type="submit">Move</button>
+                <button type="submit" className="mui-btn mui-btn--primary">Move</button>
               </form>
               <form className="player__reward" style={isNotVisible}>
-                <button type="submit">Get Reward</button>
+                <button type="submit" className="mui-btn mui-btn--primary">Get Reward</button>
               </form>
             </article>
           </div>

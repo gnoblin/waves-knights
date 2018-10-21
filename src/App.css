@@ -21,7 +21,7 @@ body {
 }
 
 .game__col {
-  
+
 }
 
 .game__statuslink {
@@ -49,4 +49,12 @@ body {
   overflow: hidden;
   white-space: nowrap;
   color: #2156f5;
+}
+
+fieldset {
+  border: 0;
+}
+
+.mui-radio input {
+  margin-right: 4px;
 }

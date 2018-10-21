@@ -8,6 +8,7 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <title>Waves Knights</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="//cdn.muicss.com/mui-0.9.41/css/mui.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="TemplateData/css/style.css">
     <script src="Build/UnityLoader.js"></script>
     <script>
@@ -16,9 +17,9 @@
         (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
         (document.mozFullScreenElement && document.mozFullScreenElement !== null) ||
         (document.msFullscreenElement && document.msFullscreenElement !== null);
-        
+
         var element = document.body.getElementsByClassName("webgl-content")[0];
-        
+
         if (!isInFullScreen) {
           document.getElementById("fullScreenButton").style.backgroundImage="url('TemplateData/img/fullScreen_off.png')";
           return (element.requestFullscreen ||
@@ -39,7 +40,7 @@
           }
         }
       }
-      
+
       function CheckCompatibility(gameInstance, onsuccess, onerror)
       {
         if (!UnityLoader.SystemInfo.hasWebGL) {
@@ -55,29 +56,29 @@
           onsuccess();
         }
       }
-      
+
       function RuntimeInitialized(){
       }
-      
+
       function UnityProgress(gameInstance, progress) {
         if (!gameInstance.Module)
         return;
-        document.getElementById("loadingBlock").style.display = "inherit";    
+        document.getElementById("loadingBlock").style.display = "inherit";
         document.getElementById("fullBar").style.width = (100 * progress) + "%";
         document.getElementById("emptyBar").style.width = (100 * (1 - progress)) + "%";
         if (progress == 1)
         {
           setTimeout(function(){ document.getElementById("loadingBlock").style.display = "none"; }, 3000);
-        } 
+        }
       }
-      
+
       window.gameInstance = UnityLoader.instantiate("gameContainer", "Build/knights4.json", {
         onProgress: UnityProgress,
         compatibilityCheck:CheckCompatibility,
         Module: {
           //TOTAL_MEMORY: 268435456,
           onRuntimeInitialized:RuntimeInitialized,
-        },    
+        },
       });
       window.beginGame = () => {
         window.gameInstance.SendMessage('WavesAdapter', 'StartBattle');
@@ -86,7 +87,7 @@
         window.gameInstance.SendMessage('WavesAdapter', 'EndBattle');
       }
       window.playerOneWin = () => {
-        console.log('PlayerOneWin'); 
+        console.log('PlayerOneWin');
         window.gameInstance.SendMessage('WavesAdapter', 'WinPlayer1');
       }
       window.playerTwoWin = () => {
@@ -102,19 +103,19 @@
       You need to enable JavaScript to run this app.
     </noscript>
     <div class="keepRatio">
-  
+
     <div class="webgl-content">
       <button id="fullScreenButton" onclick="ToggleFullScreen()"></button>
       <div id="gameContainer"></div>
     </div>
-    
-    
+
+
     <div id="loadingBlock">
       <img class="logo" src="TemplateData/img/Logo.png"></img>
       <span class="subtitle"> Waves Knights <br>
       Beautiful crossplatform 3D turn based fighting game with Rock Paper Scissors mechanics on Waves blockchain utilizing Waves Smart Contracts and Unity engine.
       </span>
-      
+
       <div id="progressBar">
         <div>LOADING ...</div>
         <div class="centered">
@@ -122,7 +123,7 @@
           <div id="fullBar"></div>
         </div>
       </div>
-      
+
       <div id="warningBrowserBlock" style="display:none;">
         <div class="warningBrowserText">
           Your browser may not be compatible with this website. For an optimal experience, we suggest you to download one of this popular web browsers.
@@ -138,15 +139,15 @@
           Please note that Unity WebGL is not currently supported on mobiles.
         </div>
       </div>
-      
+
     </div>
-    
+
     <div id="errorBrowserBlock" style="display:none;">
       <img class="logo" src="TemplateData/img/Logo.png"></img>
       <span class="subtitle"> CATCHPHRASE <br>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       </span>
-      
+
       <div id="errorContent">
         <div id="errorBrowserText">
           Your browser does not support WebGL. <br> You can download one of this popular web browsers.
@@ -158,7 +159,7 @@
         </div>
       </div>
     </div>
-    
+
   </div>
     <div id="root"></div>
   </body>
